@@ -1,0 +1,67 @@
+{
+  "name": "routify-app",
+  "version": "1.0.0",
+  "@comments scripts": {
+    "dev": "run all dev:* scripts",
+    "dev:routify": "generate Routify's routes.js on filechange",
+    "build": "run all build:* scripts",
+    "build:routify": "build routify",
+    "serve": "serve content in 'dist' folder"
+  },
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:routify": "routify",
+    "serve": "run-p serve:*",
+    "serve:spa": "spassr",
+    "serve:ssr": "spassr --ssr --port 5005",
+    "build": "cross-env NODE_ENV=production run-s build:*",
+    "build:routify": "routify -b",
+    "test": "npm run test:dev && npm run test:build",
+    "test:dev": "node test/wrapper dev ava test/{common,dev}/**/*.test.js",
+    "test:build": "node test/wrapper build ava test/{common,build}/**/*.test.js",
+    "dev:snowpack": "snowpack dev",
+    "build:snowpack": "snowpack build"
+  },
+  "devDependencies": {
+    "@roxi/routify": "latest",
+    "@ava/cooperate": "^0.1.0",
+    "fkill": "^7.1.0",
+    "npm-run-all": "^4.1.5",
+    "svelte": "^3.30.1",
+    "playwright": "^1.8.0",
+    "cross-env": "^7.0.3",
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-svelte": "^3.5.2",
+    "snowpack": "^3.0.11"
+  },
+  "routify": {
+    "extensions": "svelte,html,svx,md"
+  },
+  "@comment options": [
+    "config provides defaults for spassr, spank, tossr and poindexter.",
+    "You can delete the field and this comment, if you use neither."
+  ],
+  "options": {
+    "assets": "public",
+    "script": "public/build/main.js",
+    "template": "public/__app.html",
+    "port": 5000
+  },
+  "spassr": {
+    "assetsDir": [
+      "public"
+    ],
+    "entrypoint": "public/__app.html",
+    "script": "public/build/main.js",
+    "ssrOptions": {
+      "inlineDynamicImports": true
+    }
+  },
+  "spank": {
+    "entrypoint": "public/__app.html",
+    "script": "public/build/main.js"
+  },
+  "ava": {
+    "verbose": true
+  }
+}
