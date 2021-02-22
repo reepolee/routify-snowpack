@@ -9,8 +9,5 @@ npm i
 npm run dev
 ```
 
-If needed, add PostCSS
+PostCSS added with TailwindCSS
 
-```
-npm i postcss
-```
