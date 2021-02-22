@@ -32,7 +32,10 @@
     "cross-env": "^7.0.3",
     "@snowpack/plugin-dotenv": "^2.0.5",
     "@snowpack/plugin-svelte": "^3.5.2",
-    "snowpack": "^3.0.11"
+    "snowpack": "^3.0.11",
+    "postcss": "^8.2.6",
+    "svelte-preprocess": "^4.6.9",
+    "tailwindcss": "^2.0.3"
   },
   "routify": {
     "extensions": "svelte,html,svx,md"
@@ -63,5 +66,9 @@
   },
   "ava": {
     "verbose": true
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "postcss-import": "^14.0.0"
   }
 }
